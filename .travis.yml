@@ -1,0 +1,17 @@
+language: java
+sudo: false 
+dist: xenial
+jdk: openjdk11
+
+before_script:
+  - git clone 'https://github.com/watchdog-wms/build-tools'
+  - export WATCHDOG_PR_CHECKER=$(pwd)'/build-tools/jars/PullRequestChecker.jar'
+  - ls "${WATCHDOG_PR_CHECKER}" > /dev/null 2>&1
+
+matrix:
+  include:
+  - name: 'signed commit test'
+    env: TEST_NAME='SIGNED_COMMIT'
+ - name: 'write permission test'
+    env: TEST_NAME='WRITE_PERMISSION_TEST'
+script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
