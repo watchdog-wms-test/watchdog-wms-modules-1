@@ -12,6 +12,6 @@ matrix:
   include:
   - name: 'signed commit test'
     env: TEST_NAME='SIGNED_COMMIT'
- - name: 'write permission test'
+  - name: 'write permission test'
     env: TEST_NAME='WRITE_PERMISSION_TEST'
 script: java -jar "${WATCHDOG_PR_CHECKER}" -check "${TEST_NAME}"
