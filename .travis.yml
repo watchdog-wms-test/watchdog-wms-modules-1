@@ -10,7 +10,8 @@ before_script:
 
 matrix:
   include:
-  - name: 'signed commit test'
+  - stage: 'Tests'
+    name: 'signed commit test'
     env: TEST_NAME='SIGNED_COMMIT'
   - name: 'write permission test'
     env: TEST_NAME='WRITE_PERMISSION_TEST'
